@@ -37,9 +37,9 @@ function populateCityWeather(city, citySearchList) {
         url: queryURL,
         method: "GET"
     })
-        
+
         .then(function (weather) {
-               console.log(queryURL);
+            console.log(queryURL);
             console.log(weather);
 
             var nowMoment = moment();
@@ -69,7 +69,7 @@ function populateCityWeather(city, citySearchList) {
             longitude = weather.coord.lon;
 
             var queryURL3 =
-                "https://api.openweathermap.org/data/2.5/uvi/forecast?&units=imperial&appid=885e9149105e8901c9809ac018ce8658&q=" +
+                "https://api.openweathermap.org/data/2.5/uvi/forecast?&units=imperial&appid=660f070b64440cbd82e0a419ba51b019&q=" +
                 "&lat=" +
                 latitude +
                 "&lon=" +
@@ -91,7 +91,7 @@ function populateCityWeather(city, citySearchList) {
                 $.ajax({
                     url: queryURL2,
                     method: "GET"
-  
+
                 }).then(function (forecast) {
                     console.log(queryURL2);
 
@@ -146,16 +146,16 @@ $("#search-button").on("click", function (event) {
         .trim()
         .toLowerCase();
 
-    if (city != "") 
+    if (city != "")
 
         citySearchList[city] = true;
-        localStorage.setItem("citySearchList", JSON.stringify(citySearchList));
+    localStorage.setItem("citySearchList", JSON.stringify(citySearchList));
 
-        populateCityWeather(city, citySearchList);
+    populateCityWeather(city, citySearchList);
 
-        $("#current-weather").show();
-        $("#forecast-weather").show();
-    }
+    $("#current-weather").show();
+    $("#forecast-weather").show();
+}
 
 
 });

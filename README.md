@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 # weatherdashboard# 06 Server-Side APIs: Weather Dashboard
+=======
+# weatherdashboard
+# 06 Server-Side APIs: Weather Dashboard
+>>>>>>> 9f8449d00f2616a05c6da0d23da6ff86173814ee
 
 Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
 
@@ -43,4 +48,8 @@ You are required to submit the following for review:
 * The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
 
 - - -
+<<<<<<< HEAD
 © 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+=======
+© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+>>>>>>> 9f8449d00f2616a05c6da0d23da6ff86173814ee

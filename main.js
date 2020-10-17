@@ -141,10 +141,6 @@ function populateCityWeather(city, citySearchList) {
 
 $("#search-button").on("click", function (event) {
     event.preventDefault();
-    var city = $("#city-input")
-        .val()
-        .trim()
-        .toLowerCase();
 
     if (city != "")
 
@@ -170,9 +166,6 @@ $(document).ready(function () {
     }
 
     createCityList(citySearchList);
-
-    $("#current-weather").hide();
-    $("#forecast-weather").hide();
 
 
     $("#city-list").on("click", "button", function (event) {

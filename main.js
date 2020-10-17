@@ -155,10 +155,9 @@ $("#search-button").on("click", function (event) {
 
     $("#current-weather").show();
     $("#forecast-weather").show();
-}
+})
 
 
-});
 
 
 $(document).ready(function () {

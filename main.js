@@ -37,9 +37,12 @@ function populateCityWeather(city, citySearchList) {
         url: queryURL,
         method: "GET"
     })
-
+        // Store all of the retrieved data inside of an object called "weather"
         .then(function (weather) {
+            // Log the queryURL
             console.log(queryURL);
+
+            // Log the resulting object
             console.log(weather);
 
             var nowMoment = moment();
@@ -69,7 +72,7 @@ function populateCityWeather(city, citySearchList) {
             longitude = weather.coord.lon;
 
             var queryURL3 =
-                "https://api.openweathermap.org/data/2.5/uvi/forecast?&units=imperial&appid=660f070b64440cbd82e0a419ba51b019&q=" +
+                "https://api.openweathermap.org/data/2.5/uvi/forecast?&units=imperial&appid=885e9149105e8901c9809ac018ce8658&q=" +
                 "&lat=" +
                 latitude +
                 "&lon=" +
@@ -78,6 +81,7 @@ function populateCityWeather(city, citySearchList) {
             $.ajax({
                 url: queryURL3,
                 method: "GET"
+                // Store all of the retrieved data inside of an object called "uvIndex"
             }).then(function (uvIndex) {
                 console.log(uvIndex);
 
@@ -91,12 +95,14 @@ function populateCityWeather(city, citySearchList) {
                 $.ajax({
                     url: queryURL2,
                     method: "GET"
-
+                    // Store all of the retrieved data inside of an object called "forecast"
                 }).then(function (forecast) {
                     console.log(queryURL2);
 
                     console.log(forecast);
+                    // Loop through the forecast list array and display a single forecast entry/time (5th entry of each day which is close to the highest temp/time of the day) from each of the 5 days
                     for (var i = 6; i < forecast.list.length; i += 8) {
+                        // 6, 14, 22, 30, 38
                         var forecastDate = $("<h5>");
 
                         var forecastPosition = (i + 2) / 8;
@@ -138,24 +144,6 @@ function populateCityWeather(city, citySearchList) {
         });
 }
 
-
-$("#search-button").on("click", function (event) {
-    event.preventDefault();
-
-    if (city != "")
-
-        citySearchList[city] = true;
-    localStorage.setItem("citySearchList", JSON.stringify(citySearchList));
-
-    populateCityWeather(city, citySearchList);
-
-    $("#current-weather").show();
-    $("#forecast-weather").show();
-})
-
-
-
-
 $(document).ready(function () {
     var citySearchListStringified = localStorage.getItem("citySearchList");
 
@@ -167,6 +155,32 @@ $(document).ready(function () {
 
     createCityList(citySearchList);
 
+    $("#current-weather").hide();
+    $("#forecast-weather").hide();
+
+
+
+    $("#search-button").on("click", function (event) {
+        event.preventDefault();
+        var city = $("#city-input")
+            .val()
+            .trim()
+            .toLowerCase();
+
+        if (city != "") {
+            //Check to see if there is any text entered
+
+            citySearchList[city] = true;
+            localStorage.setItem("citySearchList", JSON.stringify(citySearchList));
+
+            populateCityWeather(city, citySearchList);
+
+            $("#current-weather").show();
+            $("#forecast-weather").show();
+        }
+
+
+    });
 
     $("#city-list").on("click", "button", function (event) {
         event.preventDefault();
